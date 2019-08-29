@@ -1,25 +1,38 @@
+
+//Program to reverse a string | Vijay Sathvika B | 29 aug 2019
 #include<stdio.h>
-char str[40],rev[40];
-int i,count=0,n;
-char rev_str(char str[]);
+#include<stdlib.h>
+#include<string.h>
+
+char *OriginalString, *ReverseString;
+char Reverse_String(char OriginalString[]);
+
 void main()
 {   
+	int size;
+	//Input size
+	printf("Enter the size of the string: ");
+	scanf("%d",&size);
+	OriginalString=(char*)malloc(size*sizeof(char));
+	ReverseString=(char*)malloc(size*sizeof(char));
+	//Input string
     printf("Enter the string: ");
-    scanf("%s", str);
-    rev_str(str);
+    scanf("%s", OriginalString);
+    Reverse_String(OriginalString);
+    printf("The reverse string is:%s", ReverseString);
+    free(OriginalString);
+    free(ReverseString);
 }
-char rev_str(char str[])
-{
-    for(i=0; str[i] != '\0'; i++)
-    {
-        count++;
-    }
-    n=count;
-    for(i=0; str[i] != '\0'; i++,n--)
-    {
-        rev[i]=str[n-1];
-    }
-    rev[count+1]='\0';
-    printf("The reverse string is: %s", rev);
 
+//Function to reverse the string
+char Reverse_String(char *OriginalString)
+{
+	int i,n;
+    n=strlen(OriginalString);
+    for(i=0; *(OriginalString+i) != '\0'; i++,n--)
+    {
+    	*(ReverseString+n) = *(OriginalString+i);
+    }
+    *(ReverseString+i+1)='\0';
+	return *ReverseString;
 }
