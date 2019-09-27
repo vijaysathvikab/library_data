@@ -1,0 +1,110 @@
+
+//Program to reverse a string | Vijay Sathvika B | 29 aug 2019
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+char *Reverse_String(char *OriginalString,char reversestring[], int size);
+char *ptr;
+
+void main()
+{   
+	int size;
+	int i;
+	char *OriginalString;
+	//Input size
+	printf("Enter the size of the string: ");
+	scanf("%d",&size);
+	OriginalString=(char*)malloc(size*sizeof(char));
+	char reversestring[sizeof(OriginalString)];
+	char revstr[sizeof(OriginalString)];
+
+	//Input string
+    printf("Enter the string: ");
+    scanf("%s", OriginalString);
+	Reverse_String(OriginalString, reversestring, size);
+    printf("The reverse string is:");
+    for(i=0;ptr!=reversestring-1; i++)
+    {
+    	revstr[i]=*(ptr-1);
+    	printf("%c", *ptr);
+    	ptr--;
+	}
+	revstr[i+1]='\0';
+    printf("\nThe reverse string is: %s \n", revstr);
+    free(OriginalString);
+    
+}
+
+//Function to reverse the string
+char *Reverse_String(char *OriginalString,char reversestring[], int size)
+{
+	
+	int i;
+    ptr=reversestring;
+    for(i=0; *(OriginalString+i) != '\0'; i++)
+    {
+    	*ptr = *(OriginalString+i);
+    	ptr++;
+    }
+    *ptr='\0';
+	return ptr;
+}       
+
+---------------------------------------------------------------------------------
+
+//Program to reverse a string | Vijay Sathvika B | 29 aug 2019
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+char *Reverse_String(char *OriginalString,char reversestring[], char revstr[]);
+
+
+void main()
+{   
+	char *ptr;
+	int i,l;
+	char *OriginalString1, *OriginalString2;
+	
+
+	OriginalString1=(char*)malloc(100*sizeof(char));
+	
+
+	//Input string
+    printf("Enter the string: ");
+    scanf("%s", OriginalString1);
+    //Allocates memory
+    l=strlen(OriginalString1);
+    OriginalString2=(char*)malloc((l+1)*sizeof(char));
+    strcpy(OriginalString2, OriginalString1);
+    free(OriginalString1);
+    
+    char reversestring[sizeof(OriginalString2)];
+	char revstr[sizeof(OriginalString2)];
+	
+	Reverse_String(OriginalString2, reversestring, revstr);
+	free(OriginalString2);
+    printf("\nThe reverse string is: %s", revstr);
+}
+
+//Function to reverse the string
+char *Reverse_String(char *OriginalString,char reversestring[], char revstr[])
+{
+	char *ptr;
+	int i;
+    ptr=reversestring;
+    for(i=0; *(OriginalString+i) != '\0'; i++)
+    {
+    	*ptr = *(OriginalString+i);
+    	ptr++;
+    }
+    for(i=0;ptr!=reversestring-1; i++)
+    {
+    	revstr[i]=*(ptr-1);
+    	ptr--;
+	}
+    *ptr='\0';
+    revstr[i+1]='\0';
+	return revstr;
+}       
